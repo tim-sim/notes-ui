@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TextField?>
+<VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.tim.ui.controller.MainController" spacing="10">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+    <HBox spacing="10.0">
+        <ComboBox fx:id="notebooksCombo" onAction="#onSelectNotebook" promptText="Select Notebook" prefWidth="200"/>
+        <Button fx:id="createNotebookButton" mnemonicParsing="false" text="New Notebook"/>
+    </HBox>
+    <HBox spacing="10.0">
+        <ListView fx:id="notesList" onMousePressed="#onSelectNote" prefWidth="200"/>
+        <VBox spacing="10.0">
+            <HBox spacing="10.0">
+                <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#onCreateNote" text="Create" visible="false"/>
+                <Button fx:id="updateNoteButton" mnemonicParsing="false" onAction="#onSaveNote" text="Save" visible="${noteHeaderText.visible}"/>
+                <Button fx:id="deleteNoteButton" mnemonicParsing="false" onAction="#onDeleteNote" text="Delete" visible="false"/>
+                <Button fx:id="cancelNoteButton" mnemonicParsing="false" onAction="#onCancelNote" text="Cancel" visible="${noteHeaderText.visible}"/>
+            </HBox>
+            <TextField fx:id="noteHeaderText" visible="false"/>
+            <TextArea fx:id="noteBodyText" prefHeight="0" prefWidth="0" visible="false" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </HBox>
+</VBox>

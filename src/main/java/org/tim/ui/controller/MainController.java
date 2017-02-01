@@ -2,6 +2,7 @@ package org.tim.ui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.tim.ui.dto.NoteBookDto;
@@ -54,6 +55,7 @@ public class MainController {
     }
 
     public void onSelectNotebook(ActionEvent actionEvent) {
+        hideNote();
         loadNotebook();
     }
 
@@ -68,8 +70,8 @@ public class MainController {
         noteHeaderText.setVisible(true);
         noteBodyText.setVisible(true);
 
-        createNoteButton.setVisible(false);
-        deleteNoteButton.setVisible(true);
+        hideNode(createNoteButton);
+        showNode(deleteNoteButton);
     }
 
     public void onCreateNote(ActionEvent actionEvent) {
@@ -94,7 +96,7 @@ public class MainController {
     public void onCancelNote(ActionEvent actionEvent) {
         hideNote();
 
-        createNoteButton.setVisible(true);
+        showNode(createNoteButton);
     }
 
     public void onSaveNote(ActionEvent actionEvent) {
@@ -120,7 +122,7 @@ public class MainController {
         notesList.getItems().clear();
         notesList.getItems().addAll(notebooksMap.get(selectedNotebook));
 
-        createNoteButton.setVisible(true);
+        showNode(createNoteButton);
     }
 
     private void hideNote() {
@@ -129,6 +131,16 @@ public class MainController {
         noteHeaderText.clear();
         noteBodyText.clear();
 
-        deleteNoteButton.setVisible(false);
+        hideNode(deleteNoteButton);
+    }
+
+    private void hideNode(Node node) {
+        node.setVisible(false);
+        node.setManaged(false);
+    }
+
+    private void showNode(Node node) {
+        node.setVisible(true);
+        node.setManaged(true);
     }
 }

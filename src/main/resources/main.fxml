@@ -14,18 +14,15 @@
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
-    <HBox spacing="10.0">
-        <ComboBox fx:id="notebooksCombo" onAction="#onSelectNotebook" promptText="Select Notebook" prefWidth="200"/>
-        <Button fx:id="createNotebookButton" mnemonicParsing="false" text="New Notebook"/>
-    </HBox>
+    <ComboBox fx:id="notebooksCombo" onAction="#onSelectNotebook" promptText="Select Notebook" prefWidth="200"/>
     <HBox spacing="10.0">
         <ListView fx:id="notesList" onMousePressed="#onSelectNote" prefWidth="200"/>
         <VBox spacing="10.0">
             <HBox spacing="10.0">
-                <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#onCreateNote" text="Create" visible="false"/>
-                <Button fx:id="updateNoteButton" mnemonicParsing="false" onAction="#onSaveNote" text="Save" visible="${noteHeaderText.visible}"/>
-                <Button fx:id="deleteNoteButton" mnemonicParsing="false" onAction="#onDeleteNote" text="Delete" visible="false"/>
-                <Button fx:id="cancelNoteButton" mnemonicParsing="false" onAction="#onCancelNote" text="Cancel" visible="${noteHeaderText.visible}"/>
+                <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#onCreateNote" text="Create" visible="false" managed="false"/>
+                <Button fx:id="updateNoteButton" mnemonicParsing="false" onAction="#onSaveNote" text="Save" visible="${noteHeaderText.visible}" managed="${noteHeaderText.visible}"/>
+                <Button fx:id="deleteNoteButton" mnemonicParsing="false" onAction="#onDeleteNote" text="Delete" visible="false" managed="false"/>
+                <Button fx:id="cancelNoteButton" mnemonicParsing="false" onAction="#onCancelNote" text="Cancel" visible="${noteHeaderText.visible}" managed="${noteHeaderText.visible}"/>
             </HBox>
             <TextField fx:id="noteHeaderText" visible="false"/>
             <TextArea fx:id="noteBodyText" prefHeight="0" prefWidth="0" visible="false" VBox.vgrow="ALWAYS"/>
